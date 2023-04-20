@@ -43,7 +43,7 @@ int main()
             mayorQue5999++;
         }
 
-        cout<<"Ingrese el sueldo correspondiente: "<<endl;
+        cout<<"Ingrese el sueldo correspondiente (ingrese 0 para finalizar): "<<endl;
         cin>>sueldo;
     }
 
