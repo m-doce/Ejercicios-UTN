@@ -35,6 +35,12 @@ int CantidadMaximaSimplificaciones(int num1, int num2)
         num1 = num1 / 5;
         num2 = num2 / 5;
     }
+    while(((num1 % 7) == 0) and ((num2 % 7) == 0))
+    {
+        i++;
+        num1 = num1 / 7;
+        num2 = num2 / 7;
+    }
     return i;
 }
 
@@ -54,6 +60,11 @@ void RetornarExpresionSimplificada(int num1, int num2, int &resutado1, int &resu
     {
         num1 = num1 / 5;
         num2 = num2 / 5;
+    }
+    while(((num1 % 7) == 0) and ((num2 % 7) == 0))
+    {
+        num1 = num1 / 7;
+        num2 = num2 / 7;
     }
 
     resutado1 = num1;
