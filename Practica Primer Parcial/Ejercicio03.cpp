@@ -1,57 +1,57 @@
-/*Una empresa lo contrata para construir un sistema que le permita calcular las estadísticas de sus ventas mensuales.
-Para ello, los empleados de la empresa ingresan por cada venta:
-● Número de factura
-● La fecha en formato AAAAMMDD
-● Monto total facturado.
-El ingreso de datos finaliza con un número de factura negativo.
-Se desea obtener:
-a. El día en que ocurrió la factura de mayor monto.
-b. El número de factura de la factura de menor monto.
-c. El promedio de facturación del mes.*/
+/*Dados N números naturales de 3 dígitos ingresados, informar cuántos eran capicúa.
+Realizar diagrama o codificación*/
 
 #include <iostream>
 using namespace std;
 
+void PedirNumero(int &numero)
+{
+    cout<<"Ingrese un numero de tres cifras (entre 100 y 999) para saber si es capicua: "<<endl;
+    cin>>numero;
+}
+
+void SepararNumero(int numero, int &unidad, int &centena)
+{
+    unidad = numero % 10;
+    centena = numero / 100;
+}
+
+bool EsCapicua(int unidad, int centena)
+{
+    if(unidad == centena)
+    return true;
+    else
+    return false;
+}
+
+void InformarResultado(bool validacion, int numero)
+{
+    if(validacion)
+    cout<<"El numero "<<numero<<" es capicua."<<endl;
+    else
+    cout<<"El numero "<<numero<<" no es capicua."<<endl;
+}
+
 int main()
 {
-    int numeroDeFactura, fecha, totalFactura;
-    int mayorImporte = 0, fechaMayor, idFacturaMenor;
-    float facturacionEnTotal = 0, promedioMensual, cantidadFacturas = 0, menorImporte = INT32_MAX;
+    int cantidadValores, numero, unidad, centena;
+    int contador = 0;
+    bool check = false;
 
-    cout<<"Ingrese el numero de factura: "<<endl;
-    cin>>numeroDeFactura;
+    cout<<"Indique la cantidad de numeros a ingresar: "<<endl;
+    cin>>cantidadValores;
 
-    while(numeroDeFactura >= 0)
+    for(int i=0; i<cantidadValores; i++)
     {
-        cout<<"Ingrese la fecha (AAAAMMDD) de facturacion: "<<endl;
-        cin>>fecha;
-        cout<<"Ingrese el monto facturado: "<<endl;
-        cin>>totalFactura;
-
-        if(totalFactura > mayorImporte)
-        {
-            mayorImporte = totalFactura;
-            fechaMayor = fecha;
-        }
-
-        if(totalFactura < menorImporte)
-        {
-            menorImporte = totalFactura;
-            idFacturaMenor = numeroDeFactura;
-        }
-
-        facturacionEnTotal += totalFactura;
-        cantidadFacturas++;
-
-        cout<<"Ingrese el numero de factura: "<<endl;
-        cin>>numeroDeFactura;
+        PedirNumero(numero);
+        SepararNumero(numero, unidad, centena);
+        check = EsCapicua(unidad, centena);
+        InformarResultado(check, numero);
+        if(check)
+        contador++;
     }
 
-    promedioMensual = facturacionEnTotal / cantidadFacturas;
-
-    cout<<"La fecha en que ocurrio la factura de mayor monto fue: "<<fechaMayor<<endl;
-    cout<<"El numero de factura de la factura de menor monto es: "<<idFacturaMenor<<endl;
-    cout<<"El promedio de la facturacion mensual es: "<<promedioMensual<<endl;
+    cout<<"Se ingresaron "<<contador<<" numeros capicuas."<<endl;
 
     return 0;
 }
