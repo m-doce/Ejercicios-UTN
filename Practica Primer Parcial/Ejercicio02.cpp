@@ -6,7 +6,7 @@ using namespace std;
 
 void PedirNumero(int &numero)
 {
-    cout<<"Ingrese un numero de tres cifras para saber si es capicua: "<<endl;
+    cout<<"Ingrese un numero de tres cifras (entre 100 y 999) para saber si es capicua: "<<endl;
     cin>>numero;
 }
 
@@ -35,6 +35,7 @@ void InformarResultado(bool validacion, int numero)
 int main()
 {
     int cantidadValores, numero, unidad, centena;
+    int contador = 0;
     bool check = false;
 
     cout<<"Indique la cantidad de numeros a ingresar: "<<endl;
@@ -46,7 +47,11 @@ int main()
         SepararNumero(numero, unidad, centena);
         check = EsCapicua(unidad, centena);
         InformarResultado(check, numero);
+        if(check)
+        contador++;
     }
+
+    cout<<"Se ingresaron "<<contador<<" numeros capicuas."<<endl;
 
     return 0;
 }
